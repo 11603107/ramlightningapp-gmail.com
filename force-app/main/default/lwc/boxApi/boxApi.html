@@ -1,0 +1,16 @@
+<template> 
+   <div style="background-color: white;  width: 100%;">  
+      <lightning-card title="Box all folder" icon-name="custom:custom14">
+         <ul class="slds-m-around_medium">
+            <lightning-button   title="Download action" icon-name="utility:chevronleft" class="slds-m-left_x-small"></lightning-button>
+
+             <template for:each={entriesList} for:item="entriesName">
+                 <div key={entriesName.id}  > 
+                  <lightning-icon icon-name={entriesName.icon} size="small"   alternative-text="folder" title={entriesName.name} ></lightning-icon>  
+                    &nbsp; <a data-id={entriesName.id} onclick={getFolderRecords}>{entriesName.name} </a>
+                 </div> 
+             </template>
+         </ul>
+     </lightning-card>
+     </div> 
+</template>

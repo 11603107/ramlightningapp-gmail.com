@@ -1,0 +1,10 @@
+<aura:component  controller ="accountAufaClass"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:registerEvent Name="getAccountId" type="c:ComEvent" />
+<aura:attribute name="AccountId" type="String" />
+
+<aura:attribute name="ConList" type = "List" />
+<aura:handler name="init" value="{!this}" action="{!c.fireComponentEvent}" />
+
+
+
+</aura:component>

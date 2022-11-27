@@ -1,0 +1,33 @@
+.dummy{
+	color : black;
+}
+.circle {
+    height: 37px;
+    width: 36px;
+    border-radius: 50%;
+    border: 2px solid #1b7a39;
+    display: inline-block;
+	    background-color: blue;
+}
+.circle1 {
+    height: 37px;
+    width: 36px;
+    border-radius: 50%;
+    border: 2px solid gainsboro;
+    display: inline-block;
+	    background-color: gainsboro;
+}
+.test{
+    width: 34px;
+    height: 34px;
+}
+.approveIcon{
+    --sds-c-icon-color-foreground: orange;
+    --sds-c-icon-color-background: gray;
+}
+
+.slds-progress-bar__value {
+    display: block;
+    background: blue;
+    height: 100%;
+}

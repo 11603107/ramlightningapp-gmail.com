@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride" access="global" >    <aura:attribute name="callLWC" type="boolean" default="false" />
+     <aura:attribute name="inputValue" type="String"/>
+     <aura:attribute name="currentDate" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:handler event="force:showToast" action="{!c.toastInfo}" />
+    <div>   
+         <!-- <c:timeSheetnewComponent onvaluechange="{!c.getValueFromLwc}" onaddRecord ="{!c.createRecord}"/><br/>   -->
+        
+        <c:newTimeSheet />
+     </div>
+    
+</aura:component>

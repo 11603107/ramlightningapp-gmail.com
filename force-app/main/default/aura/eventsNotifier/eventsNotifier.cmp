@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+  <aura:attribute name="parentName" type="String"/>
+  <aura:registerEvent name="componentEventFired" type="c:compEvent"/>
+  <aura:registerEvent name="appEvent" type="c:appEvent"/>
+
+  <div>
+    <h3>This is {!v.parentName}'s eventsNotifier.cmp instance</h3>
+    <p><lightning:button
+        label="Click here to fire a component event"
+        onclick="{!c.fireComponentEvent}" />
+    </p>
+    <p><lightning:button
+        label="Click here to fire an application event"
+        onclick="{!c.fireApplicationEvent}" />
+    </p>
+  </div>
+</aura:component>

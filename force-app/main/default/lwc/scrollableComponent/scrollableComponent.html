@@ -1,0 +1,73 @@
+<template>
+	<div style="background: white;  padding: 1%;">
+		<div>
+			<lightning-progress-indicator current-step={currentStage}>
+				<template for:each={opportunityList} for:item="stage" for:index="index">
+					<div key={stage.stage} class="slds-progress__item ">
+						<template if:true={stage.isCheck}>
+							<li class="slds-progress__item">
+								<button class="circle"  icon-name="utility:approval" title={stage.stage} value={stage.stage} onclick={handleStepBlur}>
+							</button> <br />
+						</li>
+							<span key={stage.stage}>{stage.stage} </span>
+						</template>
+						<template if:false={stage.isCheck}>
+							<li class="slds-progress__item">
+								<button class="circle1" title={stage.isCheck} value={stage.stage} onclick={handleStepBlur}  icon-name="utility:approval">
+								 
+							</button>
+							</li>
+								<span key={stage.stage}>{stage.stage} </span>
+						</template>
+					</div>
+				</template>
+				<div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100"
+					aria-valuenow="50" role="progressbar">
+					<span class="slds-progress-bar__value" style={lineWidthh}> 
+					</span>
+				</div>
+			</lightning-progress-indicator> <br />
+			 
+
+		 	<lightning-progress-indicator current-step={currentStage}> 
+				<template for:each={opportunityList} for:item="stage" for:index="index" >
+						<span key={stage.stage}>{stage.stage} </span>
+				</template>
+			</lightning-progress-indicator> 
+
+
+
+
+
+		</div>
+	</div>
+
+
+</template>
+
+<!-- 
+<template>
+<div class="slds-progress">
+<ol class="slds-progress__list">
+	<template for:each={ioStageNames} for:item="stage" for:index="index">
+<li class="slds-progress__item slds-is-active" key={stage} data-stage={stage} data-index={index}>
+<button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" data-index={index} data-stage={stage} title="Step 1 - Completed" onclick={handleStageClick}>
+        <lightning-icon icon-name="action:approval" class="approval_icon" data-index={index} alternative-text="Approved" title="Approved"></lightning-icon>
+
+<span class="slds-assistive-text">Step 1 - Completed</span>
+</button>
+</li>
+	</template>
+
+
+
+</ol>
+<div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"  role="progressbar">
+<span class="slds-progress-bar__value" style="width:100%">
+<span class="slds-assistive-text">Progress: 50%</span>
+</span>
+</div>
+</div>
+</template>
+
+	-->

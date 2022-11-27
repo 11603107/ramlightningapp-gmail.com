@@ -1,0 +1,31 @@
+<aura:component  controller ="accountAufaClass"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="AccountId" type="String"  />
+<aura:attribute name="accList" type="Account[]" />
+<aura:attribute name ="callParentComponent" type="boolean" default="false" />
+<aura:handler name="init" value="{!this}" action="{!c.doint}" />
+<aura:handler name="getAccountIdEvent" event="c:compEvent" action="{!c.handlerComponentEvent}" />
+
+<div>
+    <p> Account Data</p> 
+   
+      <br></br>
+       <aura:iteration items="{!v.accList}" var="item">
+            <lightning:button variant="base" label="{!item.Id}" title="{!item.Id}" value ="{!item.Id}" onclick="{!c.onclickonButton}"/> <br></br>
+       
+  </aura:iteration>
+
+  <aura:if isTrue="{!not(empty(v.AccountId))}">
+    "{!v.AccountId}"
+    <c:ParentCompEvent AccountId="{!v.AccountId}" />
+
+  </aura:if>
+<!--  <aura:if isTrue="{!v.callParentComponent}">
+    "{!v.AccountId}"
+    <c:ParentCompEvent AccountId="{!v.AccountId}" />
+    
+  </aura:if> 
+  -->
+
+  </div>
+
+</aura:component>

@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Event template">
+<aura:attribute Name="ConLIst" type="List" />
+</aura:event>

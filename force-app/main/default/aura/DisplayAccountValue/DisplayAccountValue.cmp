@@ -1,0 +1,17 @@
+<aura:component controller ="accountAufaClass"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+     <aura:attribute name="AccountRecord" type="List" />
+      <aura:handler  event ="c:CompEventAccData" action ="{!c.showAccountValue}" />
+     
+    <div> 
+    --> 
+      <aura:iteration items="{v.AccountRecord}" var ="accobj" >
+
+      <span>
+       ---> {!accobj.Name}  <br />
+      </span>
+      </aura:iteration>
+    
+     </div>
+    
+  
+</aura:component>

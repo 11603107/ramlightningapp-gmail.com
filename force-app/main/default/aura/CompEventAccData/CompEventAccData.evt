@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description=" component Event template" >
+    <aura:attribute name="AccountId" type ="String" />
+</aura:event>

@@ -1,0 +1,15 @@
+<template>
+     <lightning-card title="Multi-select Picklist using lightning-dual-listbox">
+        <div class="slds-p-around_small">
+            <lightning-dual-listbox name="languages"
+                                    label="Select Languages"
+                                    source-label="Available"
+                                    selected-label="Selected"
+                                    field-level-help="Select your preferred languages"
+                                    options={lstOptions}
+                                    onchange={handleChange}></lightning-dual-listbox>
+                                    <br/>
+        </div>
+        </lightning-card>
+
+</template>

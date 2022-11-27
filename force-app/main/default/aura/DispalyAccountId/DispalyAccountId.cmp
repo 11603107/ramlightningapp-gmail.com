@@ -1,0 +1,17 @@
+<aura:component controller ="accountAufaClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:registerEvent Name="SetAccountId" type ="c:CompEventAccData" />  
+    <aura:attribute Name="AccList" type="List" />
+    
+    <aura:handler name="init" value="{!this}" action = "{!c.doint}" />
+    
+    <div>
+      <p> Account Data</p>  
+        <br></br>
+         <aura:iteration items="{!v.AccList}" var="item">
+              <lightning:button variant="base" label="{!item.Id}" title="{!item.Id}" value ="{!item.Id}" onclick="{! c.onclickonButton }"/> <br></br>
+         
+    </aura:iteration>
+    </div>
+     
+	
+</aura:component>

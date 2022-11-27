@@ -1,0 +1,241 @@
+<template>
+    <div style="background-color: white;  width: 100%;">  
+        <div>
+            <span>
+                <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                    <div class="slds-size_1-of-8">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            Time Entry</div>
+                    </div>
+                    <div class="slds-size_2-of-8">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small">&nbsp;</div>
+                    </div>
+                    <div class="slds-size_1-of-8">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small">Resource</div>
+                    </div>
+                    <div class="slds-size_1-of-8">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            <div onkeyup={handleKeyUp}>
+                                <lightning-input name="enter-search" type="search" value="serch" variant="label-hidden">
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-size_1-of-8">
+                        <div class="slds-box  slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            .slds-size_1-of-2</div>
+                    </div>
+                    <div class="slds-size_1-of-8">
+                        <div class=" slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small"> copy
+                            Selected Schedules</div>
+                    </div>
+                    <div class="slds-size_1-of-8">
+                        <div class=" slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">Copy From
+                            Previous week</div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+    <br />
+    <div style="background-color: white;  width: 100%;">
+        <div if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="inverse"></lightning-spinner>
+        </div>
+        <div>
+            <span>
+                <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                    <div class="slds-size_2-of-12">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            <lightning-input name="enter-search" type="search" value={currentuserName} disabled="true"
+                                variant="label-hidden"></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-size_1-of-12">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small"> &nbsp; &nbsp; Week
+                            Ending</div>
+                    </div>
+                    <div class="slds-size_2-of-12">
+                        <div class="slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            <lightning-input type="Date" value={todaysDate} variant="label-hidden"
+                                onchange={currentDate}></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-size_2-of-12">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small">&nbsp;</div>
+                    </div>
+                    <div class="slds-size_1-of-12">
+                        <div class="  slds-box_x-small slds-text-align_center slds-m-around_x-small"> Expand Tasks</div>
+                    </div>
+
+                    <div class="slds-size_2-of-12">
+                        <div class="   slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            <lightning-formatted-url value="https://salesforce.com" tooltip="Use https://domain-name"
+                                label="Hide By status" target="_blank">
+                            </lightning-formatted-url>
+                        </div>
+                    </div>
+                    <div class="slds-size_2-of-12">
+                        <div class=" slds-box_x-small slds-text-align_center slds-m-around_x-small">&nbsp;</div>
+                    </div>
+
+                </div>
+            </span>
+        </div>
+
+        <!-- Table -->
+
+
+        <table class="slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer" role="grid">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:4%"> Nr1.</th>
+                    <th scope="col" style="width:16%"> &nbsp; &nbsp;&nbsp;Project</th>
+                    <th scope="col" style="width:16%"> &nbsp; &nbsp;&nbsp;Task</th>
+
+                    <template for:each={weekList} for:item="acc">
+                        <th key={acc.date} scope="col" style="width:8%">&nbsp; &nbsp;&nbsp;{acc.date}&nbsp;({acc.day})
+                        </th>
+                    </template> 
+                    <th scope="col" style="width:5%">&nbsp;</th>
+                    <th scope="col" style="width:3%">&nbsp;</th>
+
+                </tr>
+
+
+            </thead>
+            <tbody class="slds-scrollable" style="height:5rem;width:24rem">
+
+                <template for:each={listofTimeSheet} for:item="rec" for:index="index">
+                    <tr key={rec} class="slds-hint-parent">
+
+                        <td style="font-weight: bold; width:4%">
+                            <lightning-formatted-number value={rec.row__c}></lightning-formatted-number>.
+
+                        </td>
+                            <!--
+                        <td style="width:16%"> 
+                            <div class="slds-form-element__control"> 
+                                <div class="slds-select_container">
+                                    <template for:each={project} for:item="option">
+                                       
+                                    <div key={option.Id}>
+                                        <lightning-combobox variant="label-hidden"
+                                        name="progress"
+                                        label="Status"
+                                        value={option.Id}
+                                        placeholder="Select Progress"
+                                        options={option.Name}
+                                        onchange={handleChange} ></lightning-combobox>
+                                    </div>
+                                    </template>
+                                   
+                                </div>
+                            </div>  
+                        </td> -->
+                    <td style="width:16%"> 
+                        <div class="slds-form-element__control"> 
+                            
+
+                            <div class="slds-select_container">
+                                <select class="slds-select" name="Billing_Project__c" data-id={rec.row__c}
+                                    onchange={handleInputChange}  >
+                                        <template if:false={rec.ShowProject__c} >
+                                        <option value={rec.Billing_Project__c} label={rec.Billing_Project__r.Name} selected disabled></option> 
+                                        </template>
+                                        <template if:true={rec.ShowProject__c} >
+                                        <option value="null" label="SELECT" selected ></option>
+                                        </template>
+                                    
+                                    <template for:each={project} for:item="option">
+                                        <option key={option.Id} class="uiInputSelectOption" label={option.Name}  value={option.Id} >
+                                            </option>
+                                    </template>
+                                </select>
+                            </div>
+                        </div>  
+                    </td> 
+                        <td style="width:16%">
+                            <lightning-input type="text" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="project_Task__c" value={rec.project_Task__c} onchange={handleInputChange}>
+                            </lightning-input>
+                        </td>
+  
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="mon__c" value={rec.mon__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="Tue__c" value={rec.Tue__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="Wed__c" value={rec.Wed__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="Thu__c" value={rec.Thu__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="Fri__c" value={rec.Fri__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="Sat__c" value={rec.Sat__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+                        <td style="width:8%">
+                            <lightning-input type="number" variant="label-hidden" label="" data-id={rec.row__c}
+                                name="Sun__c" value={rec.Sun__c} onchange={handleInputChange}></lightning-input>
+                        </td>
+
+                        
+                        <td style="width:5%">
+                            <lightning-button-icon icon-name="utility:delete" alternative-text="Remove" title="Remove"
+                                name={rec.row__c} onclick={removeRow}></lightning-button-icon>
+                        </td>
+                        <td style="width:3%">
+                            &nbsp;
+                        </td>
+
+
+                    </tr>
+                </template>
+                <tr>
+                    <th scope="col" style="width:4%"> Total</th>
+                    <th scope="col" style="width:16%"> &nbsp; &nbsp;&nbsp;</th>
+                    <th scope="col" style="width:16%"> &nbsp; &nbsp;&nbsp;</th>
+
+                    <template for:each={totalWeeklyHoursChnage} for:item="time">
+                        <th key={time} scope="col" style="width:8%"> 
+                            <lightning-input type="number" disabled="true" variant="label-hidden" label=""
+                             name="Total" value={time} >
+                        </lightning-input>
+                            
+                        </th>
+                    </template>
+                     
+                    <th scope="col" style="width:5%"> <lightning-input type="number" disabled="true" variant="label-hidden" label=""
+                        name="Total" value={totalHoursOfWeek} >
+                        </lightning-input></th>
+                    <th scope="col" style="width:3%">&nbsp;</th>
+
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <lightning-button variant="neutral" label="add row" title="add additional row" icon-name="utility:add"
+            onclick={addNewRow}></lightning-button>
+
+        <br />
+        <footer class="slds-modal__footer" style="padding: 0.50rem 1rem;">
+            <lightning-button variant="brand" label="cancel" title="cancel" onclick={cancelRecord}>
+            </lightning-button>
+            &nbsp;
+            <lightning-button variant="brand" label="Save Record" title="Save Record" onclick={SaveRecord}>
+            </lightning-button>
+
+        </footer>
+    </div>
+</template>

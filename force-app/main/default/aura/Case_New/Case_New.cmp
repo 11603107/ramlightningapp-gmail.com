@@ -1,0 +1,77 @@
+<aura:component  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:actionOverride"
+    controller ="CaseobjectClass" access='global'>
+    <aura:attribute name="AccList" Type ="List" />
+    
+     <aura:attribute name="ConList" Type ="List" />
+    <aura:attribute name="AccountId" type="String" />
+    <aura:attribute name="ContactId" type="String" />
+    
+    <aura:handler name='init' action="{!c.doInit}" value="{!this}" />
+    
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-backdrop slds-backdrop_open slds-fade-in-open">
+        <div class="slds-modal__container" style="max-width:50rem">
+
+            <aura:if isTrue="{!v.showSpinner}">
+                <div class="exampleHolder slds-show">
+                    <lightning:spinner alternativeText="Loading" size="large" class="showSpinnerOnEdit"
+                        variant="brand" />
+                </div>
+            </aura:if>
+
+
+
+
+            <header class="slds-modal__header">
+                <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModel}" alternativeText="close"
+                    variant="bare-inverse" class="slds-modal__close" />
+                <h2 class="inlineTitle slds-p-top--large slds-p-horizontal--medium slds-p-bottom--medium slds-text-heading--medium"
+                    data-aura-rendered-by="2:3033;a" style="margin-bottom: -18px;">NEW CASE</h2>
+            </header>
+
+            <div class=" slds-grid slds-wrap slds-p-left_small slds-p-right_small slds-scrollable_y"
+                style="background: white;">
+                <div class="slds-col slds-size--1-of-1 slds-m-bottom_small">
+                    <h3 class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container"
+                        data-aura-rendered-by="559:3062;a">
+                        <span
+                            class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate"
+                            data-aura-rendered-by="561:3062;a">Information</span>
+                    </h3>
+
+                </div>
+                <div class="slds-col slds-size--5-of-12 slds-m-left_xx-large slds-m-bottom_small">
+
+                    <lightning:select label="Account" value="{!v.AccountId}" onchange="{!c.getContactRelatedAccount}">
+                        <option value="" label="" />
+                        <aura:iteration items="{!v.AccList}" var="cmpVal">
+                            <option value="{!cmpVal.Id}" label="{!cmpVal.Name}" />
+                        </aura:iteration>
+                    </lightning:select>
+                     
+                </div>
+                
+                 <div class="slds-col slds-size--5-of-12 slds-m-left_xx-large slds-m-bottom_small">
+
+                    <lightning:select label="Contact Name" value="{!v.ContactId}" onchange="{!c.getContactRelatedAccount}">
+                        <option value="" label="" />
+                        <aura:iteration items="{!v.ConList}" var="cmpVal">
+                            <option value="{!cmpVal.Id}" label="{!cmpVal.Contact.Name}" />
+                        </aura:iteration>
+                    </lightning:select>
+                     
+                </div>
+ 
+            </div> 
+            <!--###### MODAL BOX FOOTER Part Start ######-->
+            <footer class="slds-modal__footer">
+                <lightning:button variant="destructive" label="Cancel" title="Cancel" onclick="{!c.closeModel}" />
+                <lightning:button variant="success" label="Save" title="save" onclick="{!c.SaveHealthInsurance}" />
+
+            </footer>
+        </div>
+    </section>
+    
+    
+    
+</aura:component>
